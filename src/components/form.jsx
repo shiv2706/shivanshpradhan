@@ -6,7 +6,7 @@ function ContactForm() {
 
     if (state.succeeded) {
         return (
-            <div className="text-indigo-400 text-center mt-90 text-lg text-5xl font-semibold">
+            <div className="text-indigo-400 text-center lg:mt-90 text-lg text-5xl font-semibold mt-50 mb-50" >
                 Thanks for contacting me!
             </div>
         );
