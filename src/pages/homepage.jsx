@@ -375,7 +375,7 @@ const HomePage = () =>{
                                         src="/images/profilepicss.jpg"
                                         width={243}
                                         height={144}
-                                        className="w-90 rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10"
+                                        className="w-80 rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10"
                                     />
                                 </div>
                             </div>
