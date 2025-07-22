@@ -496,11 +496,11 @@ const HomePage = () =>{
                 </div>
 
                 {/* project section */}
-                <div id="project-section" className="mx-auto mt-32 mb-20 lg:mb-30 border-b max-w-7xl px-6 sm:mt-30 lg:px-8">
+                <div id="project-section" className="mx-auto mt-20 mb-20 lg:mb-30 border-b max-w-7xl px-6 sm:mt-30 lg:px-8">
                     <ScrollAnimate
                         initial={{y: 50 , opacity: 0}}
                         animate={{y: 0, opacity: 1}}>
-                        <div className="mx-auto max-w-2xl lg:text-center">
+                        <div className="mx-auto max-w-2xl text-center lg:text-center">
                             <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-indigo-400 sm:text-5xl lg:text-balance">
                                 Projects I've worked on
                             </p>
