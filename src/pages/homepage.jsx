@@ -1,12 +1,7 @@
 'use client'
 import '../index.css'
-import { useState } from 'react'
-import {Link, Navigate, useNavigate} from "react-router-dom";
-import { Dialog, DialogPanel } from '@headlessui/react'
-import {
-    Bars3Icon,
-    XMarkIcon,
-} from '@heroicons/react/24/outline'
+import { useState, useEffect } from 'react'
+import {Link, Navigate} from "react-router-dom";
 import {
     ArrowPathIcon,
     ChevronRightIcon,
@@ -21,68 +16,16 @@ import { BoltIcon, CalendarDaysIcon, UsersIcon } from '@heroicons/react/24/outli
 import { motion } from "framer-motion";
 import ScrollAnimate from "../components/scrollanimation.jsx";
 import ContactForm from "../components/form.jsx";
+import CountUp from "react-countup";
+import { useInView } from 'react-intersection-observer';
 
-const primaryFeatures = [
-    {
-        name: 'Server monitoring',
-        description:
-            'Non quo aperiam repellendus quas est est. Eos aut dolore aut ut sit nesciunt. Ex tempora quia. Sit nobis consequatur dolores incidunt.',
-        href: '#',
-        icon: BoltIcon,
-    },
-    {
-        name: 'Collaborate',
-        description:
-            'Vero eum voluptatem aliquid nostrum voluptatem. Vitae esse natus. Earum nihil deserunt eos quasi cupiditate. A inventore et molestiae natus.',
-        href: '#',
-        icon: UsersIcon,
-    },
-    {
-        name: 'Task scheduling',
-        description:
-            'Et quod quaerat dolorem quaerat architecto aliquam accusantium. Ex adipisci et doloremque autem quia quam. Quis eos molestiae at iure impedit.',
-        href: '#',
-        icon: CalendarDaysIcon,
-    },
-]
-const secondaryFeatures = [
-    {
-        name: 'Push to deploy.',
-        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
-        icon: CloudArrowUpIcon,
-    },
-    {
-        name: 'SSL certificates.',
-        description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
-        icon: LockClosedIcon,
-    },
-    {
-        name: 'Simple queues.',
-        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus.',
-        icon: ArrowPathIcon,
-    },
-    {
-        name: 'Advanced security.',
-        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
-        icon: FingerPrintIcon,
-    },
-    {
-        name: 'Powerful API.',
-        description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
-        icon: Cog6ToothIcon,
-    },
-    {
-        name: 'Database backups.',
-        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. ',
-        icon: ServerIcon,
-    },
-]
-const stats = [
-    { id: 1, name: 'Developers on the platform', value: '8,000+' },
-    { id: 2, name: 'Daily requests', value: '900m+' },
-    { id: 3, name: 'Uptime guarantee', value: '99.9%' },
-    { id: 4, name: 'Projects deployed', value: '12m' },
-]
+// function StatsCard() {
+//     const { ref, inView } = useInView({
+//         triggerOnce: false,     // Only trigger once
+//         threshold: 0.3,         // Percentage of the component in view before triggering
+//     });
+
+
 const footerNavigation = {
     solutions: [
         { name: 'Hosting', href: '#' },
@@ -211,9 +154,40 @@ const posts = [
         skills: ["React.js", "Tailwind CSS", "Javascript" , "Framer Motion Library" ],
     },
 ]
+const stats = [
+    { name: 'Revenue', value: '$405,091.00', change: '+4.75%', changeType: 'positive' },
+    { name: 'Overdue invoices', value: '$12,787.00', change: '+54.02%', changeType: 'negative' },
+    { name: 'Outstanding invoices', value: '$245,988.00', change: '-1.39%', changeType: 'positive' },
+    { name: 'Expenses', value: '$30,156.00', change: '+10.18%', changeType: 'negative' },
+]
+
+function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+}
 
 const HomePage = () =>{
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [solved, setSolved] = useState(null)
+    const [easySolved, setEasySolved] = useState(null)
+    const [medSolved, setMedSolved] = useState(null)
+    const [hardSolved, setHardSolved] = useState(null)
+
+    const { ref, inView } = useInView({
+        triggerOnce: false,     // Only trigger once
+        threshold: 0.3,         // Percentage of the component in view before triggering
+    });
+
+    useEffect(() => {
+        fetch(`https://leetcode-stats-api.herokuapp.com/shivanshhh_27`)
+            .then(res => res.json())
+            .then(data => {
+                setSolved(data.totalSolved);
+                setEasySolved(data.easySolved);
+                setMedSolved(data.mediumSolved);
+                setHardSolved(data.hardSolved);
+            })
+            .catch(err => console.error('Error fetching stats:', err));
+    }, []);
+
     return (
         <div className="bg-gray-900">
             {/* Header */}
@@ -522,7 +496,7 @@ const HomePage = () =>{
                 </div>
 
                 {/* project section */}
-                <div id="project-section" className="mx-auto mt-32  max-w-7xl px-6 sm:mt-30 lg:px-8">
+                <div id="project-section" className="mx-auto mt-32 mb-20 lg:mb-30 border-b max-w-7xl px-6 sm:mt-30 lg:px-8">
                     <ScrollAnimate
                         initial={{y: 50 , opacity: 0}}
                         animate={{y: 0, opacity: 1}}>
@@ -551,17 +525,6 @@ const HomePage = () =>{
                                         </div>
                                     </a>
                                     <div className="flex max-w-xl grow flex-col justify-between">
-                                        {/*<div className="mt-8 flex items-center gap-x-4 text-xs sm:justify-center">*/}
-                                        {/*    <time dateTime={post.datetime} className="text-white">*/}
-                                        {/*        {post.date}*/}
-                                        {/*    </time>*/}
-                                        {/*    /!*<a*!/*/}
-                                        {/*    /!*    href={post.category.href}*!/*/}
-                                        {/*    /!*    className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"*!/*/}
-                                        {/*    /!*>*!/*/}
-                                        {/*    /!*    {post.category.title}*!/*/}
-                                        {/*    /!*</a>*!/*/}
-                                        {/*</div>*/}
                                         <div className="group relative grow">
                                             <h3 className="mt-3 text-lg/6 font-semibold text-white ">
                                                 <p className="text-center">{post.title}</p>
@@ -579,6 +542,54 @@ const HomePage = () =>{
                                     </div>
                                 </article>
                             ))}
+                        </div>
+                    </ScrollAnimate>
+
+                </div>
+                <div>
+                    <ScrollAnimate
+                        initial={{y: -50 , opacity: 0}}
+                        animate={{y: 0, opacity: 1}}>
+                        <div className="mx-auto max-w-2xl text-center lg:text-center mb-10 lg:mb-20">
+                            <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-indigo-400 sm:text-5xl lg:text-balance">
+                                My Leetcode Stats 🔥
+                            </p>
+                        </div>
+                    </ScrollAnimate>
+
+                    <ScrollAnimate
+                        initial={{y: 50 , opacity: 0}}
+                        animate={{y: 0, opacity: 1}}>
+                        <div className="bg-gray-900" ref={ref}>
+                            <div className="mx-auto max-w-7xl">
+                                <div className="grid grid-cols-1 gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+
+                                    <div className="bg-gray-900 px-4 py-6 sm:px-6 lg:px-8">
+                                        <p className="text-4xl font-medium text-gray-400">Total Solved</p>
+                                        <p className="mt-2 flex items-baseline gap-x-2">
+                                            <span className="text-4xl font-semibold tracking-tight text-white">{inView && <CountUp end={solved} duration={3}  />}</span>
+                                        </p>
+                                    </div>
+                                    <div className="bg-gray-900 px-4 py-6 sm:px-6 lg:px-8">
+                                        <p className="text-4xl font-medium text-green-400">Easy</p>
+                                        <p className="mt-2 flex items-baseline gap-x-2">
+                                            <span className="text-4xl font-semibold tracking-tight text-green-400">{inView && <CountUp end={easySolved} duration={3} />}</span>
+                                        </p>
+                                    </div>
+                                    <div className="bg-gray-900 px-4 py-6 sm:px-6 lg:px-8">
+                                        <p className="text-4xl font-medium text-yellow-600">Medium</p>
+                                        <p className="mt-2 flex items-baseline gap-x-2">
+                                            <span className="text-4xl font-semibold tracking-tight text-yellow-600">{inView && <CountUp end={medSolved} duration={3} />}</span>
+                                        </p>
+                                    </div>
+                                    <div className="bg-gray-900 px-4 py-6 sm:px-6 lg:px-8">
+                                        <p className="text-4xl font-medium text-red-500">Hard</p>
+                                        <p className="mt-2 flex items-baseline gap-x-2">
+                                            <span className="text-4xl font-semibold tracking-tight text-red-500">{inView && <CountUp end={hardSolved} duration={3} />}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </ScrollAnimate>
 
