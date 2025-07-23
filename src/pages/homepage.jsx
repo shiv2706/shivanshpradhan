@@ -361,7 +361,7 @@ const HomePage = () =>{
 
                 {/* Skills section */}
 
-                <div className="mx-auto mt-0 max-w-7xl border-b px-6 lg:mt-20 lg:px-8 ">
+                <div className="mx-auto mt-20 max-w-7xl border-b px-6 lg:mt-20 lg:px-8 ">
                     <ScrollAnimate
                         initial={{y: -40 , opacity: 0}}
                         animate={{y: 0, opacity: 1}}>
