@@ -6,18 +6,21 @@ const educationData = [
         degree: "Bachelor of Technology (B.Tech)",
         institution: "Manipal University Jaipur",
         year: "2022 - Present",
+        current: true,
         description: "Pursuing Computer Science and Engineering with a strong focus on software development and problem-solving.",
     },
     {
         degree: "Senior Secondary (12th)",
         institution: "Salwan Public School Gurgaon",
         year: "2021 - 2022",
+        current: false,
         description: "Studied Physics, Chemistry, Mathematics, and Computer Science. Scored 93.5% overall.",
     },
     {
         degree: "Secondary (10th)",
         institution: "Salwan Public School Gurgaon",
         year: "2019-2020",
+        current: false,
         description: "Completed secondary education with 96.5% overall.",
     },
 ];
@@ -32,7 +35,8 @@ const EducationTimeline = () => {
                         className="mb-10 ml-6 relative"
 
                     >
-                        <div className="absolute w-4 h-4 bg-indigo-500 rounded-full -left-8.5 top-1.5"></div>
+                        {edu.current && <div className="absolute w-4 h-4 bg-indigo-500 rounded-full -left-8.5 top-1.5 ring-4 ring-indigo-400/40 ring-offset-2 ring-offset-transparent animate-pulse"></div>}
+                        {!edu.current && <div className="absolute w-4 h-4 bg-indigo-500 rounded-full -left-8.5 top-1.5"></div>}
                         <h3 className="text-xl font-semibold">{edu.degree}</h3>
                         <p className="text-sm text-gray-400">{edu.institution} • {edu.year}</p>
                         <p className="mt-2 text-gray-300">{edu.description}</p>
