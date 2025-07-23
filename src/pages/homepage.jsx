@@ -11,19 +11,13 @@ import {
     LockClosedIcon,
     ServerIcon,
 } from '@heroicons/react/20/solid'
-import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon, AcademicCapIcon } from '@heroicons/react/24/outline'
 import { BoltIcon, CalendarDaysIcon, UsersIcon } from '@heroicons/react/24/outline'
 import { motion } from "framer-motion";
 import ScrollAnimate from "../components/scrollanimation.jsx";
 import ContactForm from "../components/form.jsx";
 import CountUp from "react-countup";
 import { useInView } from 'react-intersection-observer';
-
-// function StatsCard() {
-//     const { ref, inView } = useInView({
-//         triggerOnce: false,     // Only trigger once
-//         threshold: 0.3,         // Percentage of the component in view before triggering
-//     });
 
 
 const footerNavigation = {
@@ -153,12 +147,6 @@ const posts = [
         },
         skills: ["React.js", "Tailwind CSS", "Javascript" , "Framer Motion Library" ],
     },
-]
-const stats = [
-    { name: 'Revenue', value: '$405,091.00', change: '+4.75%', changeType: 'positive' },
-    { name: 'Overdue invoices', value: '$12,787.00', change: '+54.02%', changeType: 'negative' },
-    { name: 'Outstanding invoices', value: '$245,988.00', change: '-1.39%', changeType: 'positive' },
-    { name: 'Expenses', value: '$30,156.00', change: '+10.18%', changeType: 'negative' },
 ]
 
 function classNames(...classes) {
@@ -546,6 +534,7 @@ const HomePage = () =>{
                     </ScrollAnimate>
 
                 </div>
+                {/*Leetcode section*/}
                 <div>
                     <ScrollAnimate
                         initial={{y: -50 , opacity: 0}}
@@ -553,6 +542,9 @@ const HomePage = () =>{
                         <div className="mx-auto max-w-2xl text-center lg:text-center mb-10 lg:mb-20">
                             <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-indigo-400 sm:text-5xl lg:text-balance">
                                 My Leetcode Stats 🔥
+                            </p>
+                            <p className="mt-4 text-xl font-semibold tracking-tight text-pretty text-gray-400 sm:text-xl lg:text-balance">
+                                Solving real-world problems daily – here’s a glimpse of my LeetCode progress.
                             </p>
                         </div>
                     </ScrollAnimate>
@@ -595,7 +587,7 @@ const HomePage = () =>{
 
                 </div>
                 {/*contact section*/}
-                <div id="contact-section" className="relative isolate mt-50 bg-gray-900">
+                <div id="contact-section" className="relative isolate mt-30 bg-gray-900">
                     <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
                         <div className="relative px-6 pt-24 pb-20 sm:pt-32 lg:static lg:px-8 lg:py-48">
                             <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
@@ -638,7 +630,7 @@ const HomePage = () =>{
                                 <ScrollAnimate
                                     initial={{x: -50 , opacity: 0}}
                                     animate={{x: 0, opacity: 1}}>
-                                    <h2 className="text-4xl font-semibold tracking-tight text-pretty text-white sm:text-5xl">Get in touch</h2>
+                                    <h2 className="text-4xl font-semibold tracking-tight text-pretty text-indigo-400 sm:text-5xl">Get in touch</h2>
                                     <p className="mt-6 text-lg/8 text-gray-400">
                                         Whether you have an opportunity, a question, or just want to say hello — feel free to drop a message. I’ll get back to you as soon as possible!
                                     </p>
@@ -661,6 +653,17 @@ const HomePage = () =>{
                                             <dd>
                                                 <a href="mailto:hello@example.com" className="hover:text-white">
                                                     shivansh4858@gmail.com
+                                                </a>
+                                            </dd>
+                                        </div>
+                                        <div className="flex gap-x-4">
+                                            <dt className="flex-none">
+                                                <span className="sr-only">Email</span>
+                                                <AcademicCapIcon aria-hidden="true" className="h-7 w-6 text-gray-400" />
+                                            </dt>
+                                            <dd>
+                                                <a href="mailto:hello@example.com" className="hover:text-white">
+                                                    Manipal University Jaipur
                                                 </a>
                                             </dd>
                                         </div>
