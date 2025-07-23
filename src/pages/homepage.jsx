@@ -599,6 +599,7 @@ const HomePage = () =>{
                     </ScrollAnimate>
 
                 </div>
+                {/*education section*/}
                 <div className="pb-0">
                     <ScrollAnimate
                         initial={{y: -50 , opacity: 0}}
@@ -620,7 +621,7 @@ const HomePage = () =>{
                 </div>
 
                 {/*contact section*/}
-                <div id="contact-section" className="relative isolate mt-30 bg-gray-900">
+                <div id="contact-section" className="relative border-t border-gray-800 isolate mt-30 bg-gray-900">
                     <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
                         <div className="relative px-6 pt-24 pb-20 sm:pt-32 lg:static lg:px-8 lg:py-48">
                             <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
