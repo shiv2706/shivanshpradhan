@@ -9,7 +9,7 @@ import {
     Cog6ToothIcon,
     FingerPrintIcon,
     LockClosedIcon,
-    ServerIcon,
+    ServerIcon, CheckIcon
 } from '@heroicons/react/20/solid'
 import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon, AcademicCapIcon } from '@heroicons/react/24/outline'
 import { BoltIcon, CalendarDaysIcon, UsersIcon } from '@heroicons/react/24/outline'
@@ -18,6 +18,7 @@ import ScrollAnimate from "../components/scrollanimation.jsx";
 import ContactForm from "../components/form.jsx";
 import CountUp from "react-countup";
 import { useInView } from 'react-intersection-observer';
+import EducationTimeline from '../components/education';
 
 
 const footerNavigation = {
@@ -147,6 +148,18 @@ const posts = [
         },
         skills: ["React.js", "Tailwind CSS", "Javascript" , "Framer Motion Library" ],
     },
+]
+const steps = [
+    { name: 'Create account', description: 'Vitae sed mi luctus laoreet.', href: '#', status: 'complete' },
+    {
+        name: 'Profile information',
+        description: 'Cursus semper viverra facilisis et et some more.',
+        href: '#',
+        status: 'current',
+    },
+    { name: 'Business information', description: 'Penatibus eu quis ante.', href: '#', status: 'upcoming' },
+    { name: 'Theme', description: 'Faucibus nec enim leo et.', href: '#', status: 'upcoming' },
+    { name: 'Preview', description: 'Iusto et officia maiores porro ad non quas.', href: '#', status: 'upcoming' },
 ]
 
 function classNames(...classes) {
@@ -348,7 +361,7 @@ const HomePage = () =>{
 
                 {/* Skills section */}
 
-                <div className="mx-auto mt-0 max-w-7xl border-b px-6 sm:mt-0 lg:px-8 lg:mt-5">
+                <div className="mx-auto mt-0 max-w-7xl border-b px-6 lg:mt-20 lg:px-8 ">
                     <ScrollAnimate
                         initial={{y: -40 , opacity: 0}}
                         animate={{y: 0, opacity: 1}}>
@@ -535,7 +548,7 @@ const HomePage = () =>{
 
                 </div>
                 {/*Leetcode section*/}
-                <div>
+                <div className="border-b pb-30">
                     <ScrollAnimate
                         initial={{y: -50 , opacity: 0}}
                         animate={{y: 0, opacity: 1}}>
@@ -586,6 +599,26 @@ const HomePage = () =>{
                     </ScrollAnimate>
 
                 </div>
+                <div className="pb-0">
+                    <ScrollAnimate
+                        initial={{y: -50 , opacity: 0}}
+                        animate={{y: 0, opacity: 1}}>
+                        <div className="mx-auto max-w-2xl text-center mt-30 lg:text-center mb-10 lg:mb-20">
+                            <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-indigo-400 sm:text-5xl lg:text-balance">
+                                Education
+                            </p>
+                        </div>
+                    </ScrollAnimate>
+                    <div>
+                        <ScrollAnimate
+                            initial={{x: -50 , opacity: 0}}
+                            animate={{x: 0, opacity: 1}}>
+                            <EducationTimeline/>
+                        </ScrollAnimate>
+
+                    </div>
+                </div>
+
                 {/*contact section*/}
                 <div id="contact-section" className="relative isolate mt-30 bg-gray-900">
                     <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
