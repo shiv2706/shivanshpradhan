@@ -347,7 +347,7 @@ const HomePage = () =>{
                                 <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
                                     <img
                                         alt="Profile IMage"
-                                        src="/images/profilepicss.jpg"
+                                        src="/images/profilepic3.png"
                                         width={243}
                                         height={144}
                                         className="w-80 rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10"
