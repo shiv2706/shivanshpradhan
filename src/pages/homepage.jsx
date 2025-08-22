@@ -318,7 +318,7 @@ const HomePage = () =>{
                         <ScrollAnimate
                             initial={{x: -50 , opacity: 0}}
                             animate={{x: 0, opacity: 1}}>
-                            <div className="mx-auto max-w-2xl shrink-0 lg:mx-0 lg:pt-8">
+                            <div className="mx-auto max-w-2xl  shrink-0 lg:mx-5 lg:pt-8">
                                 <h1 className="mt-0 text-5xl font-semibold tracking-tight text-pretty text-white sm:text-7xl text-center sm:text-left">
                                     Shivansh Pradhan
                                 </h1>
